@@ -1,16 +1,23 @@
 // Ruby Kaur
-// CSS342
-// April 19, 2023
+// CSS 342
 
 #include "creature.h"
 
-//CHANGE THIS
-std::ostream &operator<<(std::ostream &Out, const Creature &Creature) {
+using namespace std;
+
+ostream &operator<<(ostream &Out, const Creature &Creature) {
+  Out << "C(" << Creature.Row << "," << Creature.Col << ")";
   return Out;
 }
 
-Creature::Creature(int Row, int Col) : Row(Row), Col(Col) {}
+// constructor
+Creature::Creature(int Row, int Col) : Row(Row), Col(Col) {
+  this->Row = Row;
+  this->Col = Col;
+}
 
+// check if creature is at maze exit
+// return true if at exit, false otherwise
 bool Creature::atExit(const Maze &Maze) const {
   if (Row == Maze.getExitRow() && Col == Maze.getExitColumn()) {
     return true;
@@ -18,90 +25,94 @@ bool Creature::atExit(const Maze &Maze) const {
   return false;
 }
 
+// solve maze recursively using depth first search
+// param: Maze the maze object
+// return a string representation of solution path
 string Creature::solve(Maze &Maze) {
-
-  //path with direction thats being returned.
   string Path;
 
-  //base case 
-  //checks if creature is atExit already
+  // base case
   if (atExit(Maze)) {
+    Maze.markAsPath(Row,Col);
     return "";
-  }
+  } 
 
-  //North
+  Maze.markAsVisited(Row, Col);
+
+  // TRY NORTH
   if (Maze.isClear(Row-1, Col)) {
-    Path += goNorth(Maze); //returns whatever string to Path
-    Maze.markAsPath(Row-1, Col); //the curr
-    solve(Maze);
+    Path = goNorth(Maze) + solve(Maze);
+    if (!Path.empty()) {
+      Maze.markAsPath(Row,Col);
+      return Path;
+    }
+    Maze.markAsVisited(Row, Col);
   } 
 
-  //east
+  // TRY EAST
   if (Maze.isClear(Row, Col+1)) {
-    Path += goEast(Maze); //returns whatever string to Path
-    Maze.markAsPath(Row, Col+1); //the curr
-    solve(Maze);
-  } 
+    Path = goEast(Maze) + solve(Maze);
+    if (!Path.empty()) {
+      Maze.markAsPath(Row,Col);
+      return Path;
+    }  
+    Maze.markAsVisited(Row, Col);
+  }
 
-
-  //south
+  // TRY SOUTH
   if (Maze.isClear(Row+1, Col)) {
-    Path += goSouth(Maze); //returns whatever string to Path
-    Maze.markAsPath(Row+1, Col); //the curr
-    solve(Maze);
-  } 
+    Path = goSouth(Maze) + solve(Maze);
+    if (!Path.empty()) {
+      Maze.markAsPath(Row,Col);
+      return Path;
+    }
+    Maze.markAsVisited(Row, Col);
+  }
 
-  // west 
+  // TRY WEST
   if (Maze.isClear(Row, Col-1)) {
-    Path += goWest(Maze); //returns whatever string to Path
-    Maze.markAsPath(Row, Col-1); //the curr
-    solve(Maze); //resurively
+    Path = goWest(Maze) + solve(Maze);
+    if (!Path.empty()) {
+      Maze.markAsPath(Row,Col);
+      return Path;
+    }
+    Maze.markAsVisited(Row, Col);
   }
 
-  //backtracking
-  Maze.markAsVisited(Row,Col);
-
-
-  return Path; //returning the path will go thru the process again, 
-  //you dont have to recursively call it. itll go thru the NESW process again 
+  Maze.markAsVisited(Row, Col);
+  Maze.markAsPath(Row, Col);
+  return "";
 }
 
+// move creature one cell to north and return direction
+// param: Maze the maze object
+// return: strign represenation of direction moved "N"
 string Creature::goNorth(Maze &Maze) {
-  if (Row > 0 && Maze.isClear(Row - 1, Col)) {
-    Maze.markAsPath(Row, Col);
-    Maze.markAsVisited(Row, Col);
-    --Row;
-    return "N";
-  }
-  return "X";
+  Row--;
+  return "N" + solve(Maze);
 }
 
+// move creature one cell to west and return direction
+// param: Maze the maze object
+// return: strign represenation of direction moved "W"
 string Creature::goWest(Maze &Maze) {
-  if (Col > 0 && Maze.isClear(Row, Col - 1)) {
-    Maze.markAsPath(Row, Col);
-    Maze.markAsVisited(Row, Col);
-    --Col;
-    return "W";
-  }
-  return "X";
+  Col--;
+  return "W" + solve(Maze);
+
 }
 
+// move creature one cell to east and return direction
+// param: Maze the maze object
+// return: strign represenation of direction moved "E"
 string Creature::goEast(Maze &Maze) {
-  if (Col < Maze.Width - 1 && Maze.isClear(Row, Col + 1)) {
-    Maze.markAsPath(Row, Col);
-    Maze.markAsVisited(Row, Col);
-    ++Col;
-    return "E";
-  }
-  return "X";
+  Col++; 
+  return "E" + solve(Maze);
 }
 
+// move creature one cell to south and return direction
+// param: Maze the maze object
+// return: strign represenation of direction moved "S"
 string Creature::goSouth(Maze &Maze) {
-  if (Row < Maze.Height - 1 && Maze.isClear(Row + 1, Col)) {
-    Maze.markAsPath(Row, Col);
-    Maze.markAsVisited(Row, Col);
-    ++Row;
-    return "S";
-  }
-  return "X";
-}
+  Row++;
+  return "S" + solve(Maze);
+} 
