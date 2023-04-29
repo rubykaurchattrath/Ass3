@@ -1,0 +1,11 @@
+40 12
+0  3
+xxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxx xx     xxxxx                   xxxxx
+xx                xxxxxxxxx      xxx  xx
+xxxxxxxxx        xxxxxx        xxxxxxxxx
+xxxx          xxxxxxxxxxxx      x  xxxxx
+xxxx  xxxx xxxxxxxxx      xx     x  xxxx
+xxxxxx           xxx     xxxx      xxxxx
+xxx       xxxxxxxx     xx   xxxxxx   xxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
