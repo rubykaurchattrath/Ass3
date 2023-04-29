@@ -1,5 +1,5 @@
-//
-//
+// Ruby Kaur
+// CSS 342
 
 #include <fstream>
 #include <iostream>
@@ -17,6 +17,14 @@ ostream &operator<<(ostream &Out, const Maze &Maze) {
   }
   Out << endl;
   return Out;
+}
+
+int Maze::getWidth() const { 
+  return Width; 
+}
+
+int Maze::getHeight() const { 
+  return Height;
 }
 
 // For Clion, need the following line in CMakeLists.txt so maze.txt is found
@@ -44,22 +52,42 @@ Maze::Maze(const string &FileName) {
 
 }
 
+// Returns the row of the maze's exit
 int Maze::getExitRow() const {
   return ExitRow;
 }
 
+// @return the column of the maze's exit
 int Maze::getExitColumn() const {
   return ExitColumn;
 }
 
+/**
+  * Determines whether a given location in the maze is clear 
+  * (i.e., can be traversed).
+  * @param row the row of the location
+  * @param col the column of the location
+  * @return true if the location is clear, 
+  * false otherwise
+     */
 bool Maze::isClear(int Row, int Col) const {
   return Field[Row][Col] == ' ';
 }
 
+/**
+  * Marks a given location in the maze as part of the solution path.
+  * @param row the row of the location
+  * @param col the column of the location
+  */
 void Maze::markAsPath(int Row, int Col) {
   Field[Row][Col] = '*';
 }
 
+ /**
+  * Marks a given location in maze as visited by the creature.
+  * @param row the row of the location
+  * @param col the column of the location
+  */
 void Maze::markAsVisited(int Row, int Col) {
   Field[Row][Col] = '+';
 }
