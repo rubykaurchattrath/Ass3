@@ -1,6 +1,5 @@
-//
-// 
-//
+// Ruby Kaur 
+// CSS 342
 
 #ifndef ASS3_MAZE_H
 #define ASS3_MAZE_H
@@ -8,6 +7,7 @@
 #include <ostream>
 
 using namespace std;
+
 
 enum CELL { CLEAR, WALL, PATH, VISITED };
 
@@ -25,6 +25,8 @@ public:
   void markAsVisited(int Row, int Col);
   int getExitRow() const;
   int getExitColumn() const;
+  int getWidth() const;
+  int getHeight() const;
 
 };
 
