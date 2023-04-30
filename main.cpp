@@ -1,41 +1,41 @@
+// Ruby Kaur
+// CSS 342
+
 #include <iostream>
+#include <cassert>
+
 
 #include "creature.h"
 #include "maze.h"
-#include <cassert>
 
 void test() {
     Maze M("maze.txt");
-    // cout << m << endl;
     Creature C(4, 4);
-    cout << "Path: " << C.solve(M) << endl;
+    string result = C.solve(M);
+    cout << "Path: " << result << endl;
     cout << M << endl;
-    assert(C.solve(M) == "EEENNNEEEEEESEESSSEEENNNNN");
+    assert(result == "EEENNNEEEEEESEESSSEEENNNNN");
 
-    // Test if program can backtrack
     Maze M1("maze1.txt");
-    // cout << m << endl;
-    Creature C1(4, 11);
-    cout << "Path: " << C1.solve(M1) << endl;
+    Creature C1(1, 1);
+    string result1 = C1.solve(M1);
+    cout << "Path: " << result1 << endl;
     cout << M1 << endl;
-    assert(C1.solve(M1) == "WWWWWNNNEESSSEEE");
-   
-    // Test if program can handle maze with no exit
-    // Output should be empty
+    assert(result1 == "SSEEENNE");
+
     Maze M2("maze2.txt");
-    // cout << m << endl;
-    Creature C2(1, 3);
-    cout << "Path: " << C2.solve(M2) << endl;
+    Creature C2(1, 1);
+    string result2 = C2.solve(M2);
+    cout << "Path: " << result2 << endl;
     cout << M2 << endl;
-    assert(C2.solve(M2).empty());
+    assert(result2 == "SSEEESESESESWWWSSEEEEEEEEEENNNEEEEEEEEEEEEEEE");
 
     Maze M3("maze3.txt");
-    // cout << m << endl;
-    Creature C3(3, 11);
-    cout << "Path: " << C3.solve(M3) << endl;
+    Creature C3(6, 32);
+    string result3 = C3.solve(M3);
+    cout << "Path: " << result3 << endl;
     cout << M3 << endl;
-    assert(C3.solve(M3).empty());
-
+    assert(result3 == "NWNWNNNWSSSSWNNNNWWWWWWWWWWWSWSWNWSWNWSSWNNWNWSWNWSWWWWNN");
 }
 
 int main() {
