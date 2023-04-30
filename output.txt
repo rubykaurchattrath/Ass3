@@ -1,4 +1,4 @@
-Fri Apr 28 23:43:45 PDT 2023
+Sat Apr 29 23:18:50 PDT 2023
 *** compiling with clang++ to create an executable called myprogram
 clang version 14.0.6 (Red Hat 14.0.6-1.module+el8.7.0+1080+d88dc670)
 Target: x86_64-redhat-linux-gnu
@@ -13,16 +13,48 @@ LLVM (http://llvm.org/):
 *** running myprogram
 Path: EEENNNEEEEEESEESSSEEENNNNN
 xxxxxxxxxxxxxxxxxx*x
-x     x+++++++xxxx+x
-x xxxxx+xxxxx+++xx+x
-x xxxxx+xxxxxxx+xx+x
-x x ++++     xx+xx+x
-x xxxxxxxxxx xx++++x
+x     x*******xxxx*x
+x xxxxx*xxxxx***xx*x
+x xxxxx*xxxxxxx*xx*x
+x x ****     xx*xx*x
+x xxxxxxxxxx xx****x
 xxxxxxxxxxxxxxxxxxxx
 
 
-myprogram: main.cpp:13: void test(): Assertion `C.solve(M) == "EEENNNEEEEEESEESSSEEENNNNN"' failed.
-./simplecompile.sh: line 29: 389164 Aborted                 (core dumped) ./myprogram
-*** cleaning up, deleting myprogram
-Fri Apr 28 23:43:53 PDT 2023
+Path: SSEEENNE
+xxxxxx
+x*+x**
+x*xx*x
+x****x
+xxxxxx
 
+
+Path: SSEEESESESESWWWSSEEEEEEEEEENNNEEEEEEEEEEEEEEE
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x*xxxxxxxxxxxxx   xxxxxxxx  xx
+x*xxxxx    xxxx   xxxxxx   xxx
+x****xxxxx  xxxx  xxxxxxx   xx
+xxxx**xxx    xxxx  xxxxx   xxx
+x    **xxxx xxx+xxxxxx+xxxxxxx
+xxxxxx**xxxxx ****************
+x  x****++++x *  xx       xxxx
+x xx*xxxxxxxxx* xxxxxxxx  xxxx
+x   *********** xxxxxx xx    x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+Path: NWNWNNNWSSSSWNNNNWWWWWWWWWWWSWSWNWSWNWSSWNNWNWSWNWSWWWWNN
+xxx*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxx*xx+****xxxxx+**************++++xxxxx
+xx ***************xxxxxxxxx+***++xxx  xx
+xxxxxxxxx++******xxxxxx+++++***xxxxxxxxx
+xxxx+++++++**+xxxxxxxxxxxx++****x  xxxxx
+xxxx++xxxx+xxxxxxxxx      xx**+**x  xxxx
+xxxxxx+++++++++++xxx     xxxx+++*  xxxxx
+xxx+++++++xxxxxxxx     xx   xxxxxx   xxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+Done!
+*** cleaning up, deleting myprogram
+Sat Apr 29 23:18:58 PDT 2023
