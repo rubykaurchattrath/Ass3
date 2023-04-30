@@ -1,8 +1,13 @@
-6 6
-xxxxxx
-x    x
-x xx x
-x xx x
-x    x
-xxxxxx 
-
+30 11
+6  29
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+x xxxxxxxxxxxxx   xxxxxxxx  xx
+x xxxxx    xxxx   xxxxxx   xxx
+x    xxxxx  xxxx  xxxxxxx   xx
+xxxx  xxx    xxxx  xxxxx   xxx
+x      xxxx xxx xxxxxx xxxxxxx
+xxxxxx  xxxxx                     
+x  x        x    xx       xxxx
+x xx xxxxxxxxx  xxxxxxxx  xxxx
+x               xxxxxx xx    x
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
